@@ -1,0 +1,86 @@
+[keyboard]
+name = "rcls_kbd"
+product_name = "rcls_kbd"
+vendor_id = 0x4c4b
+product_id = 0x4643
+manufacturer = "Nyle Cohen"
+chip = "nrf52840"
+
+[layout]
+rows = 6
+cols = 10
+layers = 4
+keymap = [
+    # =============== LAYER 0 (colemak_dh) ===============
+    [
+        ["Grave","Tab","LCtrl","LShift","MO(1)",  "Backspace","Backspace","Quote","RAlt","MO(2)"],
+        ["Kc1","Q","A","X","Enter",               "Kc0","Semicolon","O","Slash","Space"],
+        ["Kc2","W","R","C","Delete",                "Kc9","Y","I","Dot","TG(3)"],
+        ["Kc3","F","S","D","LGui",                "Kc8","U","E","Comma","Escape"],
+        ["Kc4","P","T","V","LeftBracket",         "Kc7","L","N","H","RightBracket"],
+        ["Kc5","B","G","Z","_",                   "Kc6","J","M","K","_"]
+    ],
+    # =============== LAYER 1 (media + arrows) ===============
+    [
+        ["_","_","_","_","_",                     "_","_","_","_","_"],
+        ["_","_","_","_","_",                     "_","_","_","_","_"],
+        ["_","_","_","_","_",                     "_","_","Right","_","_"],
+        ["_","_","MediaPlayPause","_","_",        "_","_","Up","_","_"],
+        ["_","_","AudioVolDown","_","_",          "_","_","Down","_","_"],
+        ["_","_","AudioVolUp","_","_",            "_","_","Left","_","_"]
+    ],
+    # =============== LAYER 2 (media + arrows) ===============
+    [
+        ["_","_","_","_","_",                     "_","_","_","_","_"],
+        ["_","_","_","_","_",                     "_","_","Backslash","_","_"],
+        ["_","_","_","_","_",                     "_","_","_","_","_"],
+        ["_","_","_","_","_",                     "_","_","_","_","_"],
+        ["_","_","_","_","_",                     "_","_","Equal","_","_"],
+        ["_","_","_","_","_",                     "_","_","Minus","_","_"]
+    ],
+
+    # =============== LAYER 3 (QWERTY Toggle) =============== 
+    [
+        ["Grave","Tab","LCtrl","LShift","MO(1)", "Backspace","Backspace","Quote","RAlt","MO(2)"],
+        ["Kc1","Q","A","Z","Enter",              "Kc0","P","Semicolon","Slash","Space"],
+        ["Kc2","W","S","X","Delete",        "Kc9","O","L","Dot","TG(3)"],
+        ["Kc3","E","D","C","LGui",              "Kc8","I","K","Comma","Escape"],
+        ["Kc4","R","F","V","LeftBracket",        "Kc7","U","J","M","RightBracket"],
+        ["Kc5","T","G","B","_",                  "Kc6","Y","H","N","_"]
+    ]
+]
+
+[ble]
+enabled = true
+battery_adc_pin = "P0_31"
+adc_divider_measured = 510
+adc_divider_total = 1510
+
+#[storage]
+# Set `clear_storage` to true to clear all the stored info when the keyboard boots
+#clear_storage = true
+
+[split]
+connection = "ble"
+
+[split.central]
+rows = 6
+cols = 5
+row_offset = 0
+col_offset = 0
+
+[split.central.matrix]
+matrix_type = "normal"
+input_pins = ["P0_05", "P1_11", "P1_12", "P1_13", "P1_14", "P1_15"]
+output_pins = ["P0_02", "P0_03", "P0_28", "P0_29", "P0_04"]
+
+[[split.peripheral]]
+rows = 6
+cols = 5
+row_offset = 0
+col_offset = 5
+
+[split.peripheral.matrix]
+matrix_type = "normal"
+input_pins = ["P0_05", "P1_11", "P1_12", "P1_13", "P1_14", "P1_15"]
+output_pins = ["P0_02", "P0_03", "P0_28", "P0_29", "P0_04"]
